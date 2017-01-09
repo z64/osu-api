@@ -25,3 +25,7 @@ Or install it yourself as:
 ## Usage
 
 TODO: Write usage instructions here
+
+## Support
+
+Open an issue, or preferably, contact me on Discord - I'm `Lune#2639a`
