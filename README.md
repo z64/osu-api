@@ -1,6 +1,6 @@
 # Osu::Api
 
-REST API binding for Osu!
+REST API binding for [Osu!](https://osu.ppy.sh/)
 
 See [here](https://github.com/ppy/osu-api/wiki) for more details.
 
