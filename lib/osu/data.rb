@@ -42,7 +42,7 @@ module Osu
     # A hash of the number of times
     # this User has completed a game
     # with ss, s, or a rank
-    # @return [Hash<Integer>]
+    # @return [Hash<Symbol, Integer>]
     attr_reader :count_rank
 
     # @return [String]
