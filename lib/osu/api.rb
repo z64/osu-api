@@ -14,6 +14,8 @@ module Osu
       # @return [Hash] parameters to pass as a querystring
       attr_reader :params
 
+      # Executes the request set up by the instance
+      # of whatever implements GetRequest
       def execute(key)
         params.merge!({ k: key })
 
