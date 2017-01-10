@@ -23,5 +23,10 @@ module Osu
     def Auth(auth)
       { k: auth }
     end
+
+    # @return [Hash] limit hash part
+    def Limit(number)
+      { limit: number }
+    end
   end
 end
