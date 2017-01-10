@@ -1,4 +1,5 @@
 require 'osu/api'
+require 'osu/data'
 
 module Osu
   # Client interface that caches a token to make
@@ -12,7 +13,8 @@ module Osu
     end
 
     def user(name)
-      API::User.new(name).execute key
+      request = API::User.new(name)
+      User.new request.execute(key)[0]
     end
   end
 end
