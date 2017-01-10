@@ -10,5 +10,9 @@ module Osu
     def initialize(key)
       @key = key
     end
+
+    def user(name)
+      API::User.new(name).execute key
+    end
   end
 end
