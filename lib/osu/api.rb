@@ -15,8 +15,8 @@ module Osu
       attr_reader :params
 
       def execute(key)
-        params.merge! { k: key }
-        
+        params.merge!({ k: key })
+
         response = RestClient.get endpoint, params: params
         JSON.parse response
       end
