@@ -2,6 +2,7 @@ require 'json'
 require 'rest-client'
 
 require 'osu/api/constants'
+require 'osu/api/hash'
 require 'osu/api/get_request'
 
 module Osu
@@ -13,7 +14,7 @@ module Osu
 
       def initialize(user)
         @endpoint = 'get_user'
-        @params = { u: user }
+        @params = API::User user
       end
     end
   end
