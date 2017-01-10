@@ -83,6 +83,11 @@ module Osu
 
       @events = data['events'].map { |e| Event.new e }
     end
+
+    # @return [String] url to this users Osu! profile
+    def profile_url
+      "#{API::BASE_URL}/u/#{id}"
+    end
   end
 
   # An event, which is delivered in the users
