@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'osu/api/version'
+require 'osu/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'osu-api'
-  spec.version       = Osu::Api::VERSION
+  spec.version       = Osu::VERSION
   spec.authors       = ['z64']
   spec.email         = ['zachnowicki@gmail.com']
 
