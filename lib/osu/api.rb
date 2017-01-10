@@ -1,5 +1,5 @@
 module Osu
-  module Api
+  module API
     # Your code goes here...
   end
 end
