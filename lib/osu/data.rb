@@ -55,31 +55,31 @@ module Osu
     attr_reader :events
 
     def initialize(data)
-      @id = data['user_id']
+      @id = data['user_id'].to_i
       @name = data['username']
 
-      @count300 = data['count300']
-      @count100 = data['count100']
-      @count50 = data['count50']
+      @count300 = data['count300'].to_i
+      @count100 = data['count100'].to_i
+      @count50 = data['count50'].to_i
 
-      @playcount = data['playcount']
+      @playcount = data['playcount'].to_i
 
-      @ranked_score = data['ranked_score']
-      @total_score = data['total_score']
+      @ranked_score = data['ranked_score'].to_i
+      @total_score = data['total_score'].to_i
 
-      @pp_rank = data['pp_rank']
-      @level = data['level']
-      @pp_raw = data['pp_raw']
-      @accuracy = data['accuracy']
+      @pp_rank = data['pp_rank'].to_i
+      @level = data['level'].to_f
+      @pp_raw = data['pp_raw'].to_f
+      @accuracy = data['accuracy'].to_f
 
       @count_rank = {
-        ss: data['count_rank_ss'],
-        s: data['count_rank_s'],
-        a: data['count_rank_a']
+        ss: data['count_rank_ss'].to_i,
+        s: data['count_rank_s'].to_i,
+        a: data['count_rank_a'].to_i
       }
 
       @country = data['country']
-      @pp_country_rank = data['pp_country_rank']
+      @pp_country_rank = data['pp_country_rank'].to_i
 
       # TODO: Abstract this into Event objects
       @events = data['events']
