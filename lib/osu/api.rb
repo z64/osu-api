@@ -1,11 +1,11 @@
 require 'json'
 require 'rest-client'
 
+require 'osu/api/constants'
+
 module Osu
   # Interface to Osu's REST API
   module API
-    API_URL = 'https://osu.ppy.sh/api'.freeze
-
     # Structure of a GET request to the API
     module GetRequest
       # @return [String] endpoint to query
