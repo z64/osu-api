@@ -5,7 +5,7 @@ module Osu
 
     # Osu! game modes
     MODE = [
-      :osu,
+      :standard,
       :taiko,
       :ctb,
       :mania
