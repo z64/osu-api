@@ -1,3 +1,5 @@
+require 'osu/api'
+
 module Osu
   # Client interface that caches a token to make
   # subsequent requests with
