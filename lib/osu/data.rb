@@ -81,8 +81,35 @@ module Osu
       @country = data['country']
       @pp_country_rank = data['pp_country_rank'].to_i
 
-      # TODO: Abstract this into Event objects
-      @events = data['events']
+      @events = data['events'].map { |e| Event.new e }
+    end
+  end
+
+  # An event, which is delivered in the users
+  # payload when they score in the top 1000 plays
+  # on a beatmap
+  class Event
+    # @return [String] embedded html code for this event
+    attr_reader :display_html
+
+    # @return [Integer]
+    attr_reader :beatmap_id
+
+    # @return [Integer]
+    attr_reader :beatmapset_id
+
+    # @return [Time]
+    attr_reader :date
+
+    # @return [Integer]
+    attr_reader :epicfactor
+
+    def initialize(data)
+      @display_html = data['display_html']
+      @beatmap_id = data['beatmap_id'].to_i
+      @beatmapset_id = data['beatmapset_id'].to_i
+      @date = Time.new data['date']
+      @epicfactor = data['epicfactor'].to_i
     end
   end
 end
