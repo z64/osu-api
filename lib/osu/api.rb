@@ -29,5 +29,14 @@ module Osu
         JSON.parse response
       end
     end
+
+    class User
+      include GetRequest
+
+      def initialize(user)
+        @endpoint = 'get_user'
+        @params = { u: user }
+      end
+    end
   end
 end
