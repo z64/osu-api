@@ -1,3 +1,5 @@
+require 'time'
+
 # Data structures to abstract API responses
 # into more helpful objects
 module Osu
@@ -113,7 +115,7 @@ module Osu
       @display_html = data['display_html']
       @beatmap_id = data['beatmap_id'].to_i
       @beatmapset_id = data['beatmapset_id'].to_i
-      @date = Time.new data['date']
+      @date = Time.parse data['date']
       @epicfactor = data['epicfactor'].to_i
     end
   end
