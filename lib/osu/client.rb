@@ -13,8 +13,8 @@ module Osu
     end
 
     def user(name)
-      request = API::User.new(name)
-      User.new request.execute(key)[0]
+      payload = API::User.new(name).execute(key)
+      User.new payload unless payload.empty?
     end
   end
 end
