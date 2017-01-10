@@ -14,7 +14,7 @@ module Osu
 
       def initialize(user)
         @endpoint = 'get_user'
-        @params = API::User user
+        @params = API.user user
       end
     end
   end

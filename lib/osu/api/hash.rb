@@ -6,7 +6,7 @@ module Osu
     module_function
 
     # @return [Hash] user hash part
-    def User(data)
+    def user(data)
       if data.is_a? Integer
         { u: data, type: 'id' }
       elsif data.is_a? String
@@ -15,17 +15,17 @@ module Osu
     end
 
     # @return [Hash] mode hash part
-    def Mode(mode)
+    def mode(mode)
       { m: MODE.index(mode) }
     end
 
     # @return [Hash] auth hash part
-    def Auth(auth)
+    def auth(auth)
       { k: auth }
     end
 
     # @return [Hash] limit hash part
-    def Limit(number)
+    def limit(number)
       { limit: number }
     end
   end

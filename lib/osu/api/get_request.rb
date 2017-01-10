@@ -17,7 +17,7 @@ module Osu
       # Executes the request set up by the instance
       # of whatever implements GetRequest
       def execute(key)
-        params.merge! API::Auth(key)
+        params.merge! API.auth(key)
 
         response = RestClient.get url, params: params
         JSON.parse response
