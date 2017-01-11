@@ -122,5 +122,124 @@ module Osu
 
   # An Osu! beatmap
   class Beatmap
+    # @return [Integer]
+    attr_reader :set_id
+
+    # @return [Integer]
+    attr_reader :id
+
+    # TODO: make symbol table for this
+    # @return [Symbol]
+    attr_reader :approved
+
+    # @return [Integer]
+    attr_reader :total_length
+
+    # @return [Integer]
+    attr_reader :hit_length
+
+    # @return [String]
+    attr_reader :version
+
+    # @return [String]
+    attr_reader :md5
+
+    # @return [Hash<Symbol, Integer]
+    attr_reader :difficulty
+
+    # @return [Symbol]
+    attr_reader :mode
+
+    # @return [Time]
+    attr_reader :approved_date
+
+    # @return [Time]
+    attr_reader :last_update
+
+    # @return [String]
+    attr_reader :artist
+
+    # @return [String]
+    attr_reader :title
+
+    # @return [String]
+    attr_reader :creator
+
+    # @return [Integer]
+    attr_reader :bpm
+
+    # @return [String]
+    attr_reader :source
+
+    # @return [String]
+    attr_reader :tags
+
+    # @return [Integer]
+    attr_reader :genre_id
+
+    # @return [Integer]
+    attr_reader :language_id
+
+    # @return [Integer]
+    attr_reader :favourite_count
+
+    # @return [Integer]
+    attr_reader :play_count
+
+    # @return [Integer]
+    attr_reader :pass_count
+
+    # @return [Integer]
+    attr_reader :max_combo
+
+    def initialize(data)
+      @set_id = data['beatmapset_id'].to_i
+      @id = data['beatmap_id'].to_i
+
+      @approved = data['approved'].to_i
+
+      @total_length = data['total_length'].to_i
+      @hit_length = data['hit_length'].to_i
+
+      @version = data['version']
+
+      @md5 = data['md5']
+
+      @difficulty = {
+        size: data['diff_size'].to_i,
+        overall: data['diff_overall'].to_i,
+        approach: data['diff_approach'].to_i,
+        drain: data['diff_drain'].to_i,
+        rating: data['difficultyrating'].to_f
+      }
+
+      @mode = API::MODE.at data['mode'].to_i
+
+      @approved_date = Time.parse data['approved_date'] unless data['approved_date'].nil?
+      @last_update = Time.parse data['last_update']
+
+      @artist = data['artist']
+      @title = data['title']
+      @creator = data['creator']
+
+      @bpm = data['bpm'].to_i
+
+      @source = data['source']
+      @tags = data['tags']
+
+      @genre_id = data['genre_id'].to_i
+      @language_id = data['language_id'].to_i
+
+      @favourite_count = data['favourite_count'].to_i
+      @play_count = data['play_count'].to_i
+      @pass_count = data['pass_count'].to_i
+
+      @max_combo = data['max_combo'].to_i
+    end
+
+    # @return [String] url to this beatmap
+    def url
+      "#{API::BASE_URL}/b/#{id}"
+    end
   end
 end
