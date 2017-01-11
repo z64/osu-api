@@ -19,7 +19,7 @@ module Osu
     end
 
     # @return [Array<Beatmap>] beatmaps matching search criteria
-    def beatmap(id, author = nil, mode = nil)
+    def beatmap(id, author = nil, mode = nil, limit = nil)
       payload = API::Beatmap.new(
         id: id,
         author: author,
