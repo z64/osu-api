@@ -12,11 +12,13 @@ module Osu
       @key = key
     end
 
+    # @return [User]
     def user(name)
       payload = API::User.new(name).execute(key)
       User.new payload[0] unless payload.empty?
     end
 
+    # @return [Array<Beatmap>] beatmaps matching search criteria
     def beatmap(id, author = nil, mode = nil)
       payload = API::Beatmap.new(
         id: id,
