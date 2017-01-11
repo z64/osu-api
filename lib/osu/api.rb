@@ -17,5 +17,21 @@ module Osu
         @params = API.user user
       end
     end
+
+    class Beatmap
+      include GetRequest
+
+      # NOTE: You can make a query with ID, OR author and mode, not all three.
+      #       If you specify all three, ID will be ignored by the API
+      def initialize(id: nil, author: nil, mode: nil)
+        @endpoint = 'get_beatmaps'
+
+        @params = {}
+
+        @params.merge! API.beatmap(id) if id
+        @params.merge! API.user(author) if author
+        @params.merge! API.mode(mode) if mode
+      end
+    end
   end
 end
