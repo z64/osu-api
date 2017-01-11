@@ -22,7 +22,7 @@ module Osu
     # @param author [String] author name
     # @param mode [Symbol] game mode (see Osu::API::MODE)
     # @param limit [Integer] number of maps to return
-    # @return [Array<Beatmap>] beatmaps matching search criteria
+    # @return [Beatmap, Array<Beatmap>] beatmaps matching search criteria
     def beatmap(id, author = nil, mode = nil, limit = nil)
       payload = API::Beatmap.new(
         id: id,
@@ -31,7 +31,10 @@ module Osu
         limit: limit
       ).execute(key)
 
-      payload.map { |e| Beatmap.new e } unless payload.empty?
+      return if payload.empty?
+
+      return Beatmap.new payload[0] if id && author.nil? && mode.nil? && limit.nil?
+      payload.map { |e| Beatmap.new e }
     end
   end
 end
