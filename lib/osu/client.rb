@@ -31,7 +31,7 @@ module Osu
         limit: limit
       ).execute(key)
 
-      payload
+      payload.map { |e| Beatmap.new e } unless payload.empty?
     end
   end
 end

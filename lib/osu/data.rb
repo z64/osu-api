@@ -119,4 +119,8 @@ module Osu
       @epicfactor = data['epicfactor'].to_i
     end
   end
+
+  # An Osu! beatmap
+  class Beatmap
+  end
 end
