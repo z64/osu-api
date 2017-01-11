@@ -16,5 +16,15 @@ module Osu
       payload = API::User.new(name).execute(key)
       User.new payload[0] unless payload.empty?
     end
+
+    def beatmap(id, author = nil, mode = nil)
+      payload = API::Beatmap.new(
+        id: id,
+        author: author,
+        mode: mode
+      ).execute(key)
+
+      payload
+    end
   end
 end
