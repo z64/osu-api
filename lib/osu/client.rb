@@ -23,7 +23,8 @@ module Osu
       payload = API::Beatmap.new(
         id: id,
         author: author,
-        mode: mode
+        mode: mode,
+        limit: limit
       ).execute(key)
 
       payload
