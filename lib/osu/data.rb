@@ -128,9 +128,8 @@ module Osu
     # @return [Integer]
     attr_reader :id
 
-    # TODO: make symbol table for this
-    # @return [Symbol]
-    attr_reader :approved
+    # @return [Symbol] approval status of this map (see API::APPROVAL)
+    attr_reader :approval
 
     # @return [Integer]
     attr_reader :total_length
@@ -196,7 +195,7 @@ module Osu
       @set_id = data['beatmapset_id'].to_i
       @id = data['beatmap_id'].to_i
 
-      @approved = data['approved'].to_i
+      @approval = API::APPROVAL.fetch data['approved'].to_i
 
       @total_length = data['total_length'].to_i
       @hit_length = data['hit_length'].to_i
@@ -240,6 +239,11 @@ module Osu
     # @return [String] url to this beatmap
     def url
       "#{API::BASE_URL}/b/#{id}"
+    end
+
+    # @return [true, false] whether this map is approved
+    def approved?
+      API::APPROVAL.key(@approval) > 0
     end
   end
 end
