@@ -19,6 +19,11 @@ module Osu
       { b: id }
     end
 
+    # @return [Hash] beatmapset hash part
+    def beatmap_set(id)
+      { s: id }
+    end
+
     # @return [Hash] mode hash part
     def mode(mode)
       { m: MODE.index(mode) }
