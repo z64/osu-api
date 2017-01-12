@@ -143,7 +143,7 @@ module Osu
     # @return [String]
     attr_reader :md5
 
-    # @return [Hash<Symbol, Integer]
+    # @return [Hash<Symbol, Integer>]
     attr_reader :difficulty
 
     # @return [Symbol]
