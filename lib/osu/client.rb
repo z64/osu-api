@@ -36,5 +36,12 @@ module Osu
       return Beatmap.new payload[0] if id && author.nil? && mode.nil? && limit.nil?
       payload.map { |e| Beatmap.new e }
     end
+
+    # @param id [Integer] beatmap set id
+    # @return [Array<Beatmap>] beatmaps belonging to this set
+    def beatmap_set(id)
+      payload = API::Beatmap.new(set: id).execute(key)
+      payload.map { |e| Beatmap.new e } unless payload.empty?
+    end
   end
 end
