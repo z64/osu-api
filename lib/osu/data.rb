@@ -203,7 +203,7 @@ module Osu
 
       @version = data['version']
 
-      @md5 = data['md5']
+      @md5 = data['file_md5']
 
       @difficulty = {
         size: data['diff_size'].to_i,
