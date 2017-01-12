@@ -15,7 +15,6 @@ module Osu
     ]
 
     # Approval enum
-    # // 4 = loved, 3 = qualified, 2 = approved, 1 = ranked, 0 = pending, -1 = WIP, -2 = graveyard
     APPROVAL = {
       4 => :loved,
       3 => :qualified,
