@@ -241,10 +241,10 @@ module Osu
       "#{API::BASE_URL}/b/#{id}"
     end
 
-    # @return [String] url to download this beatmap
-    def download_url
-      "#{API::BASE_URL}/d/#{id}"
-    end
+    # # @return [String] url to download this beatmap
+    # def download_url
+    #   "#{API::BASE_URL}/d/#{id}"
+    # end
 
     # @return [true, false] whether this map is approved
     def approved?
