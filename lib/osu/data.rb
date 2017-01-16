@@ -230,8 +230,8 @@ module Osu
       @language_id = data['language_id'].to_i
 
       @favourite_count = data['favourite_count'].to_i
-      @play_count = data['play_count'].to_i
-      @pass_count = data['pass_count'].to_i
+      @play_count = data['playcount'].to_i
+      @pass_count = data['passcount'].to_i
 
       @max_combo = data['max_combo'].to_i
     end
