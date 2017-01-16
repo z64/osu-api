@@ -236,9 +236,14 @@ module Osu
       @max_combo = data['max_combo'].to_i
     end
 
-    # @return [String] url to this beatmap
+    # @return [String] url to this beatmap's profile
     def url
       "#{API::BASE_URL}/b/#{id}"
+    end
+
+    # @return [String] url to download this beatmap
+    def download_url
+      "#{API::BASE_URL}/d/#{id}"
     end
 
     # @return [true, false] whether this map is approved
