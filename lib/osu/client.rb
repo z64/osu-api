@@ -13,9 +13,10 @@ module Osu
     end
 
     # @return [User]
-    def user(name, mode = nil)
+    def user(name, mode = :standard)
+      raise "Unkown mode '#{mode}'" unless API::MODE.include? mode
       payload = API::User.new(name, mode).execute(key)
-      User.new payload[0] unless payload.empty?
+      User.new(payload[0], mode) unless payload.empty?
     end
 
     # @param id [Integer] beatmap id
