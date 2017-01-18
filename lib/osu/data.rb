@@ -56,7 +56,10 @@ module Osu
     # @return [Array<Event>] events of this user's profile
     attr_reader :events
 
-    def initialize(data)
+    # @return [Symbol] game mode this users stats belong to
+    attr_reader :mode
+
+    def initialize(data, mode)
       @id = data['user_id'].to_i
       @name = data['username']
 
@@ -84,6 +87,8 @@ module Osu
       @pp_country_rank = data['pp_country_rank'].to_i
 
       @events = data['events'].map { |e| Event.new e }
+
+      @mode = mode
     end
 
     # @return [String] url to this users Osu! profile
