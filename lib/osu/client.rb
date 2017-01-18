@@ -13,8 +13,8 @@ module Osu
     end
 
     # @return [User]
-    def user(name)
-      payload = API::User.new(name).execute(key)
+    def user(name, mode = nil)
+      payload = API::User.new(name, mode).execute(key)
       User.new payload[0] unless payload.empty?
     end
 
