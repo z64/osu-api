@@ -12,9 +12,9 @@ module Osu
     class User
       include GetRequest
 
-      def initialize(user)
+      def initialize(user, mode = :standard)
         @endpoint = 'get_user'
-        @params = API.user user
+        @params = API.user(user).merge API.mode(mode)
       end
     end
 
