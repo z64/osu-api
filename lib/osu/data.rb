@@ -175,7 +175,7 @@ module Osu
     # @return [String]
     attr_reader :source
 
-    # @return [String]
+    # @return [Array<String>]
     attr_reader :tags
 
     # @return [Integer]
@@ -229,7 +229,7 @@ module Osu
       @bpm = data['bpm'].to_i
 
       @source = data['source']
-      @tags = data['tags']
+      @tags = data['tags'].split(' ')
 
       @genre_id = data['genre_id'].to_i
       @language_id = data['language_id'].to_i
