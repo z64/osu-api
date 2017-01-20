@@ -269,6 +269,9 @@ module Osu
     # @return [Symbol] approval status of this map (see API::APPROVAL)
     attr_reader :approval
 
+    # @return [Symbol]
+    attr_reader :mode
+
     # @return [String]
     attr_reader :artist
 
@@ -290,6 +293,8 @@ module Osu
       @id = map.set_id
 
       @approval = map.approval
+
+      @mode = map.mode
 
       @artist = map.artist
 
