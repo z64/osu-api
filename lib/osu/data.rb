@@ -256,4 +256,13 @@ module Osu
       API::APPROVAL.key(@approval) > 0
     end
   end
+
+  class BeatmapSet
+    attr_reader :beatmaps
+    alias maps beatmaps
+
+    def initialize(beatmaps = [])
+      @beatmaps = beatmaps
+    end
+  end
 end
