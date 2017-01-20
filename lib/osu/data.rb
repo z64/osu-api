@@ -258,6 +258,7 @@ module Osu
   end
 
   class BeatmapSet
+    # @return [Array<Beatmap>] the beatmaps contained in this set
     attr_reader :beatmaps
     alias maps beatmaps
 
