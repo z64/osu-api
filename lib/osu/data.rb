@@ -257,6 +257,7 @@ module Osu
     end
   end
 
+  # A collection of Beatmaps
   class BeatmapSet
     # @return [Array<Beatmap>] the beatmaps contained in this set
     attr_reader :beatmaps
