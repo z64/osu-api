@@ -273,5 +273,10 @@ module Osu
 
       @id = map.set_id
     end
+
+    # @return [String] url to this beatmap set's profile
+    def url
+      "#{API::BASE_URL}/s/#{id}"
+    end
   end
 end
