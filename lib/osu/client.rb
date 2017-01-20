@@ -42,7 +42,9 @@ module Osu
     # @return [Array<Beatmap>] beatmaps belonging to this set
     def beatmap_set(id)
       payload = API::Beatmap.new(set: id).execute(key)
-      payload.map { |e| Beatmap.new e } unless payload.empty?
+
+      maps =  payload.map { |e| Beatmap.new e }
+      BeatmapSet.new(maps) unless payload.empty?
     end
   end
 end
