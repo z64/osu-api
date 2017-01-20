@@ -265,6 +265,21 @@ module Osu
     # @return [Integer] beatmap set ID
     attr_reader :id
 
+    # @return [Symbol] approval status of this map (see API::APPROVAL)
+    attr_reader :approval
+
+    # @return [String]
+    attr_reader :artist
+
+    # @return [String]
+    attr_reader :title
+
+    # @return [String]
+    attr_reader :creator
+
+    # @return [String]
+    attr_reader :source
+
     def initialize(beatmaps)
       raise 'Must supply Array<Beatmap> with at least one element' unless beatmaps.is_a?(Array) && beatmaps.first.is_a?(Beatmap)
       @beatmaps = beatmaps
@@ -272,6 +287,16 @@ module Osu
       map = beatmaps.first
 
       @id = map.set_id
+
+      @approval = map.approval
+
+      @artist = map.artist
+
+      @title = map.title
+
+      @creator = map.creator
+
+      @source = map.source
     end
 
     # @return [String] url to this beatmap set's profile
