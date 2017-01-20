@@ -262,9 +262,16 @@ module Osu
     attr_reader :beatmaps
     alias maps beatmaps
 
+    # @return [Integer] beatmap set ID
+    attr_reader :id
+
     def initialize(beatmaps)
       raise 'Must supply Array<Beatmap> with at least one element' unless beatmaps.is_a?(Array) && beatmaps.first.is_a?(Beatmap)
       @beatmaps = beatmaps
+
+      map = beatmaps.first
+
+      @id = map.set_id
     end
   end
 end
