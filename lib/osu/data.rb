@@ -313,6 +313,9 @@ module Osu
 
   # A score, belonging to a user or beatmap
   class Score
+    # @return [Intger]
+    attr_reader :beatmap_id
+
     # @return [Integer]
     attr_reader :score
 
@@ -362,6 +365,8 @@ module Osu
     attr_reader :pp
 
     def initialize(data)
+      @beatmap_id = data['beatmap_id'].nil? ? nil : data['beatmap_id'].to_i
+
       @score = data['score'].to_i
 
       @username = data['username']
