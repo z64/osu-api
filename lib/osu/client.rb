@@ -65,14 +65,27 @@ module Osu
     end
 
     # @param user [String, Integer] filter scores by player name or ID
+    # @param sort [Symbol] either :best or :recent
     # @param mode [Symbol] filter scores by game mode (see Osu::API::MODE)
     # @param limit [Integer] maximum amount of results to return
-    def user_best_score(user, mode = nil, limit: nil)
-      payload = API::UserBestScore.new(
-        user,
-        mode,
-        limit: limit
-      ).execute(key)
+    def user_score(user, sort = :best, mode = nil, limit: nil)
+      payload = if sort == :best
+        API::UserBestScore.new(
+          user,
+          mode,
+          limit: limit
+        )
+      elsif sort == :recent
+        API::UserRecentScore.new(
+          user,
+          mode,
+          limit: limit
+        )
+      else
+        raise 'Sort must be either :best or :recent!'
+      end
+
+      payload = payload.execute(key)
 
       payload.map do |e|
         e['username'] = user if user.is_a? String
