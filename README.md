@@ -2,7 +2,7 @@
 
 REST API binding for [Osu!](https://osu.ppy.sh/)
 
-See [here](https://github.com/ppy/osu-api/wiki) for more details on the API.
+See [here](https://github.com/ppy/osu-api/wiki) for more details about the API.
 
 Created for [ccr](https://github.com/z64/ccr)
 
