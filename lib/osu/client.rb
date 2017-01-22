@@ -46,5 +46,22 @@ module Osu
       maps =  payload.map { |e| Beatmap.new e }
       BeatmapSet.new(maps) unless payload.empty?
     end
+
+    # @param id [Integer] id of the beatmap to get scores for
+    # @param user [String, Integer] filter scores by player name or ID
+    # @param mode [Symbol] filter scores by game mode (see Osu::API::MODE)
+    # @param mods [Integer, Array<Symbol>] mods bits or an array of mods symbols (see Osu::Mods::MODS hashmap)
+    # @param limit [Integer] maximum amount of results to return
+    def beatmap_score(id, user = nil, mode = nil, mods: nil, limit: nil)
+      payload = API::BeatmapScore.new(
+        id,
+        user: user,
+        mode: mode,
+        mods: mods,
+        limit: limit
+      ).execute(key)
+
+      payload.map { |e| Score.new(e) }
+    end
   end
 end
