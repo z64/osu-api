@@ -64,7 +64,10 @@ module Osu
 
       return if payload.empty?
 
-      payload.map { |e| Score.new(e) }
+      payload.map do |e|
+        e['beatmap_id'] = id
+        Score.new(e)
+      end
     end
 
     # @param user [String, Integer] filter scores by player name or ID
