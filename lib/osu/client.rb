@@ -24,7 +24,7 @@ module Osu
     # @param mode [Symbol] game mode (see Osu::API::MODE)
     # @param limit [Integer] number of maps to return
     # @return [Beatmap, Array<Beatmap>] beatmaps matching search criteria
-    def beatmap(id, author = nil, mode = nil, limit = nil)
+    def beatmap(id, author: nil, mode: nil, limit: nil)
       payload = API::Beatmap.new(
         id: id,
         author: author,
@@ -53,7 +53,7 @@ module Osu
     # @param mods [Integer, Array<Symbol>] mods bits or an array of mods symbols (see Osu::Mods::MODS hashmap)
     # @param limit [Integer] maximum amount of results to return
     # @return [Array<Score>]
-    def beatmap_score(id, user = nil, mode = nil, mods: nil, limit: nil)
+    def beatmap_score(id, user: nil, mode: nil, mods: nil, limit: nil)
       payload = API::BeatmapScore.new(
         id,
         user: user,
@@ -70,7 +70,7 @@ module Osu
     # @param mode [Symbol] filter scores by game mode (see Osu::API::MODE)
     # @param limit [Integer] maximum amount of results to return
     # @return [Array<Score>]
-    def user_score(user, sort = :best, mode = nil, limit: nil)
+    def user_score(user, sort = :best, mode: nil, limit: nil)
       payload = if sort == :best
         API::UserBestScore.new(
           user,
