@@ -4,6 +4,7 @@ require 'rest-client'
 require 'osu/api/constants'
 require 'osu/api/hash'
 require 'osu/api/get_request'
+require 'osu/api/mods.rb'
 
 module Osu
   # Interface to Osu's REST API
@@ -33,6 +34,53 @@ module Osu
         @params.merge! API.user(author) if author
         @params.merge! API.mode(mode) if mode
         @params.merge! API.limit(limit) if limit
+      end
+    end
+
+    class BeatmapScore
+      include GetRequest
+
+      def initialize(id, user: nil, mode: nil, mods: nil, limit: nil)
+        @endpoint = 'get_scores'
+
+        @params = {}
+
+        @params.merge! API.beatmap(id) if id
+        @params.merge! API.user(user) if user
+        @params.merge! API.mode(mode) if mode
+        if mods
+          mods = API::Mods.bits(mods) if mods.is_a? Array
+          @params.merge! API.mods(mods)
+        end
+        @params.merge! API.limit(limit) if limit
+      end
+    end
+
+    module UserScore
+      def initialize(user, mode = :standard, limit: nil)
+        @params = {}
+
+        @params.merge! API.user(user) if user
+        @params.merge! API.mode(mode) if mode
+        @params.merge! API.limit(limit) if limit
+      end
+    end
+
+    class UserBestScore
+      include GetRequest
+      include UserScore
+
+      def endpoint
+        @endpoint = 'get_user_best'
+      end
+    end
+
+    class UserRecentScore
+      include GetRequest
+      include UserScore
+
+      def endpoint
+        @endpoint = 'get_user_recent'
       end
     end
   end

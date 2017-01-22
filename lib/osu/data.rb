@@ -310,4 +310,95 @@ module Osu
       "#{API::BASE_URL}/s/#{id}"
     end
   end
+
+  # A score, belonging to a user or beatmap
+  class Score
+    # @return [Integer]
+    attr_reader :score
+
+    # @return [String]
+    attr_reader :username
+
+    # @return [Integer]
+    attr_reader :count300
+
+    # @return [Integer]
+    attr_reader :count100
+
+    # @return [Integer]
+    attr_reader :count50
+
+    # @return [Integer]
+    attr_reader :count_miss
+
+    # @return [Integer]
+    attr_reader :max_combo
+
+    # @return [Integer]
+    attr_reader :count_katu
+    alias katu count_katu
+
+    # @return [Integer]
+    attr_reader :count_geki
+    alias geki count_geki
+
+    # @return [true, false]
+    attr_reader :perfect
+    alias perfect? perfect
+
+    # @return [Integer]
+    attr_reader :mods_bits
+
+    # @return [Integer]
+    attr_reader :user_id
+
+    # @return [Time]
+    attr_reader :date
+
+    # @return [String]
+    attr_reader :rank
+
+    # @return [Float]
+    attr_reader :pp
+
+    def initialize(data)
+      @score = data['score'].to_i
+
+      @username = data['username']
+
+      @count300 = data['count300'].to_i
+
+      @count100 = data['count100'].to_i
+
+      @count50 = data['count50'].to_i
+
+      @count_miss = data['countmiss'].to_i
+
+      @max_combo = data['maxcombo'].to_i
+
+      @count_katu = data['countkatu'].to_i
+
+      @count_geki = data['countgeki'].to_i
+
+      @perfect = data['perfect'].to_i == 1
+
+      @mod_bits = data['enabled_mods'].to_i
+
+      @user_id = data['user_id'].to_i
+
+      @date = Time.parse data['date']
+
+      @rank = data['rank']
+
+      @pp = data['pp'].nil? ? nil : data['pp'].to_f
+    end
+
+    # Get an array of symbols or strings as to what mods
+    # this score has enabled
+    #
+    # @return [Array<Symbol>, Array<String>]
+    def mods(stringify = false)
+      API::Mods.mods @mod_bits, stringify
+    end
+  end
 end

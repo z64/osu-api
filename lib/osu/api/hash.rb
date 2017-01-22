@@ -38,5 +38,10 @@ module Osu
     def limit(number)
       { limit: number }
     end
+
+    # @return [Hash] mods hash part
+    def mods(bits)
+      { mods: bits }
+    end
   end
 end
