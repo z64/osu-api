@@ -62,6 +62,8 @@ module Osu
         limit: limit
       ).execute(key)
 
+      return if payload.empty?
+
       payload.map { |e| Score.new(e) }
     end
 
@@ -88,6 +90,8 @@ module Osu
       end
 
       payload = payload.execute(key)
+
+      return if payload.empty?
 
       payload.map do |e|
         e['username'] = user if user.is_a? String
