@@ -55,5 +55,33 @@ module Osu
         @params.merge! API.limit(limit) if limit
       end
     end
+
+    module UserScore
+      def initialize(user, mode = :standard, limit: nil)
+        @params = {}
+
+        @params.merge! API.user(user) if user
+        @params.merge! API.mode(mode) if mode
+        @params.merge! API.limit(limit) if limit
+      end
+    end
+
+    class UserBestScore
+      include GetRequest
+      include UserScore
+
+      def endpoint
+        @endpoint = 'get_user_best'
+      end
+    end
+
+    class UserRecentScore
+      include GetRequest
+      include UserScore
+
+      def endpoint
+        @endpoint = 'get_user_recent'
+      end
+    end
   end
 end
