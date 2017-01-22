@@ -63,5 +63,21 @@ module Osu
 
       payload.map { |e| Score.new(e) }
     end
+
+    # @param user [String, Integer] filter scores by player name or ID
+    # @param mode [Symbol] filter scores by game mode (see Osu::API::MODE)
+    # @param limit [Integer] maximum amount of results to return
+    def user_best_score(user, mode = nil, limit: nil)
+      payload = API::UserBestScore.new(
+        user,
+        mode,
+        limit: limit
+      ).execute(key)
+
+      payload.map do |e|
+        e['username'] = user if user.is_a? String
+        Score.new(e)
+      end
+    end
   end
 end
