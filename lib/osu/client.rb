@@ -12,6 +12,9 @@ module Osu
       @key = key
     end
 
+    # @param name [String, Integer] name or ID of the user
+    # @param mode [Symbol] game mode to pull stats for (see Osu::API::MODE)
+    # @param event_days [Integer] number of days to pull event history from
     # @return [User]
     def user(name, mode = :standard, event_days: nil)
       raise "Requested user for unknown mode '#{mode}'" unless API::MODE.include? mode
