@@ -14,6 +14,11 @@ module Osu
       end
     end
 
+    # @return [Hash] event days hash part
+    def event_days(number)
+      { event_days: number }
+    end
+
     # @return [Hash] beatmap hash part
     def beatmap(id)
       { b: id }
