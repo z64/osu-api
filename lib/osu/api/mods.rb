@@ -42,7 +42,7 @@ module Osu
       # @param stringify [true, false] whether to stringify the symbols
       # @return [Array<Symbol>, Array<String>]
       def mods(bits, stringify = false)
-        return :none if bits.zero?
+        return stringify ? ['None'] : [:none] if bits.zero?
 
         flags = []
 
