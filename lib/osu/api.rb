@@ -13,9 +13,14 @@ module Osu
     class User
       include GetRequest
 
-      def initialize(user, mode = :standard)
+      def initialize(user, mode = :standard, event_days: nil)
         @endpoint = 'get_user'
-        @params = API.user(user).merge API.mode(mode)
+
+        @params = {}
+
+        @params.merge! API.user(user)
+        @params.merge! API.mode(mode)
+        @params.merge! API.event_days(event_days) if event_days
       end
     end
 
