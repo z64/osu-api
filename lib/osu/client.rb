@@ -13,9 +13,9 @@ module Osu
     end
 
     # @return [User]
-    def user(name, mode = :standard)
+    def user(name, mode = :standard, event_days: nil)
       raise "Requested user for unknown mode '#{mode}'" unless API::MODE.include? mode
-      payload = API::User.new(name, mode).execute(key)
+      payload = API::User.new(name, mode, event_days).execute(key)
       User.new(payload[0], mode) unless payload.empty?
     end
 
