@@ -11,7 +11,7 @@ Created for [ccr](https://github.com/z64/ccr)
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'osu-api', github: 'https://github.com/z64/osu-api'
+gem "osu-api", git: "https://github.com/z64/osu-api.git"
 ```
 
 And then execute:
