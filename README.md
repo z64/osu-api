@@ -1,10 +1,13 @@
 # Osu::Api
 
-Ruby [REST API](https://github.com/ppy/osu-api/wiki) bindings for [osu!](https://osu.ppy.sh/)
+Ruby REST API bindings for [osu!](https://osu.ppy.sh/)
+
+## Resources
+
+* [API Reference](https://github.com/ppy/osu-api/wiki)
+* [Documentation](https://www.rubydoc.info/github/z64/osu-api)
 
 ## Installation
-
-### Using bundler
 
 * Install bundler via Ruby gems:
 
@@ -26,23 +29,13 @@ gem 'osu-api', git: 'https://github.com/z64/osu-api.git'
 ```bash
 $ bundle update
 ```
-    
-### Using Ruby gems
-
-* Install it with:
-
-```bash
-$ gem install osu-api
-```
 
 ## Usage
-
-For full documentation, see [here](http://www.rubydoc.info/github/z64/osu-api)
 
 Basic usage examples:
 
 ```ruby
-osu = Osu::Client.new 'token'
+osu = Osu::Client.new 'api-key'
 
 # User stats can be requested by name (string) or ID (integer)
 osu.user 'skudfuddle' #=> User
