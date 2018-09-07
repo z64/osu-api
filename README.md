@@ -4,8 +4,8 @@ Ruby REST API bindings for [osu!](https://osu.ppy.sh/)
 
 ## Resources
 
-* [API Reference](https://github.com/ppy/osu-api/wiki)
 * [Documentation](https://www.rubydoc.info/github/z64/osu-api)
+* [osu! API Reference](https://github.com/ppy/osu-api/wiki)
 
 ## Installation
 
