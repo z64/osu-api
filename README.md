@@ -15,9 +15,9 @@ Ruby REST API bindings for [osu!](https://osu.ppy.sh/)
 $ gem install bundler
 ```
     
-* Create file named `Gemfile` in your project root folder
+* Create a file named `Gemfile` in your project root folder
 
-* Add this lines to your application's Gemfile:
+* Add these lines to your application's `Gemfile`:
 
 ```ruby
 source 'https://rubygems.org'
@@ -73,4 +73,4 @@ osu.user_score 'skudfuddle', :recent
 
 ## Support
 
-Open an issue, or preferably, contact me on Discord - I'm `Lune#2639`
+Open an issue, or preferably, contact me on Discord - I'm `z64#1337`
